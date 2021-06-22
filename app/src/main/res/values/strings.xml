@@ -13,4 +13,8 @@
     <string name="menu_perfil">Mi perfil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txtBtnIngresar">Ingresar</string>
+    <string name="txtBtnRegistro">Registrarse</string>
+    <string name="txtHintEmail">Ingrese su correo:</string>
+    <string name="txtHintPassowrd">Ingrese su contraseña:</string>
 </resources>
