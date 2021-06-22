@@ -10,5 +10,20 @@
         android:name="com.elpunto.app.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/categoriasFragment"
+        android:name="com.elpunto.app.ui.categorias.CategoriasFragment"
+        android:label="@string/menu_categorias"
+        tools:layout="@layout/fragment_categorias" />
+    <fragment
+        android:id="@+id/pedidosFragment"
+        android:name="com.elpunto.app.ui.pedidos.PedidosFragment"
+        android:label="@string/menu_pedidos"
+        tools:layout="@layout/fragment_pedidos" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.elpunto.app.ui.miperfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
 
 </navigation>
