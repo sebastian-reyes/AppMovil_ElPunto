@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.elpunto.app.common.Constantes;
+import com.elpunto.app.common.SharedPreferencesManager;
 import com.elpunto.app.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
@@ -38,10 +39,17 @@ public class LoginActivity extends AppCompatActivity {
                 Login();
             }
         });
+        validarDatos();
     }
 
     private void mostrarMensajeError(String respuesta) {
         Toast.makeText(getApplicationContext(), respuesta, Toast.LENGTH_LONG).show();
+    }
+
+    private void validarDatos() {
+        if (!SharedPreferencesManager.getSomeStringValue(Constantes.PREF_NOMBRES).equals("")) {
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        }
     }
 
     public void Login() {
@@ -60,6 +68,22 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             if (response.getInt("id_usuario") > 0) {
+                                SharedPreferencesManager.setSomeIntValue(
+                                        Constantes.PREF_ID,
+                                        response.getInt("id_usuario")
+                                );
+                                SharedPreferencesManager.setSomeStringValue(
+                                        Constantes.PREF_NOMBRES,
+                                        response.getString("nombres")
+                                );
+                                SharedPreferencesManager.setSomeStringValue(
+                                        Constantes.PREF_APELLIDOS,
+                                        response.getString("apellidos")
+                                );
+                                SharedPreferencesManager.setSomeStringValue(
+                                        Constantes.PREF_EMAIL,
+                                        response.getString("email")
+                                );
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             } else {
                                 mostrarMensajeError(response.getString("mensaje"));
@@ -74,11 +98,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         NetworkResponse networkResponse = error.networkResponse;
                         String jsonResponse = new String(networkResponse.data);
-                        try{
+                        try {
                             JSONObject jsonError = new JSONObject(jsonResponse);
                             String msj = jsonError.getString("mensaje");
                             mostrarMensajeError(msj);
-                        }catch (JSONException ex){
+                        } catch (JSONException ex) {
                             ex.printStackTrace();
                         }
                     }
