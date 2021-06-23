@@ -1,15 +1,20 @@
 package com.elpunto.app;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.elpunto.app.common.Constantes;
 import com.elpunto.app.common.SharedPreferencesManager;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -58,11 +63,21 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         TextView txtBienvenida = findViewById(R.id.tvBienvenida);
         TextView txtEmail = findViewById(R.id.tvEmail);
-        txtBienvenida.setText("Bienvenido "+
-                SharedPreferencesManager.getSomeStringValue(Constantes.PREF_NOMBRES)+" "
-                +SharedPreferencesManager.getSomeStringValue(Constantes.PREF_APELLIDOS)+"!");
+        txtBienvenida.setText("Bienvenido " +
+                SharedPreferencesManager.getSomeStringValue(Constantes.PREF_NOMBRES) + " "
+                + SharedPreferencesManager.getSomeStringValue(Constantes.PREF_APELLIDOS) + "!");
         txtEmail.setText(SharedPreferencesManager.getSomeStringValue(Constantes.PREF_EMAIL));
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cerrarsesion:
+                mostrarDialogoCerrarSesion();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -70,5 +85,26 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void mostrarDialogoCerrarSesion() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Cerrar sesión");
+        builder.setMessage("Estás seguro de cerrar sesión?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferencesManager.setSomeIntValue(Constantes.PREF_ID,0);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_NOMBRES,null);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_APELLIDOS,null);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_EMAIL,null);
+                        finishAffinity();
+                    }
+                }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).show();
     }
 }
