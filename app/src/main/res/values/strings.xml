@@ -17,4 +17,5 @@
     <string name="txtBtnRegistro">Registrarse</string>
     <string name="txtHintEmail">Ingrese su correo:</string>
     <string name="txtHintPassowrd">Ingrese su contraseña:</string>
+    <string name="txtBtnEditar">Editar perfil</string>
 </resources>
