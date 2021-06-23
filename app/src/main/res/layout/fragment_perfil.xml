@@ -48,13 +48,22 @@
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnEditarPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
                 android:text="@string/txtBtnEditar"
                 android:textColor="@color/white"
                 app:icon="@drawable/ic_baseline_edit_24"
+                app:iconGravity="textEnd" />
+
+            <Button
+                android:id="@+id/btnEliminarUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txtBtnEliminarUsuario"
+                app:backgroundTint="@color/design_default_color_error"
+                app:icon="@drawable/ic_baseline_delete_forever_24"
                 app:iconGravity="textEnd" />
         </LinearLayout>
 
