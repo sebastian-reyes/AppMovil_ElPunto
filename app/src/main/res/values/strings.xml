@@ -19,4 +19,6 @@
     <string name="txtHintPassowrd">Ingrese su contraseña:</string>
     <string name="txtBtnEditar">Editar perfil</string>
     <string name="txtBtnEliminarUsuario">Eliminar Usuario</string>
+    <string name="next"><![CDATA[>]]></string>
+    <string name="txtCat">Categoria</string>
 </resources>
