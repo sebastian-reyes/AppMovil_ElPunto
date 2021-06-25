@@ -84,6 +84,10 @@ public class LoginActivity extends AppCompatActivity {
                                         Constantes.PREF_EMAIL,
                                         response.getString("email")
                                 );
+                                SharedPreferencesManager.setSomeStringValue(
+                                        Constantes.PREF_TELEFONO,
+                                        response.getString("telefono")
+                                );
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             } else {
                                 mostrarMensajeError(response.getString("mensaje"));

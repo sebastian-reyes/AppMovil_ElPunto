@@ -94,10 +94,11 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferencesManager.setSomeIntValue(Constantes.PREF_ID,0);
-                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_NOMBRES,null);
-                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_APELLIDOS,null);
-                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_EMAIL,null);
+                        SharedPreferencesManager.setSomeIntValue(Constantes.PREF_ID, 0);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_NOMBRES, null);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_APELLIDOS, null);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_EMAIL, null);
+                        SharedPreferencesManager.setSomeStringValue(Constantes.PREF_TELEFONO, null);
                         finishAffinity();
                     }
                 }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

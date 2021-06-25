@@ -24,6 +24,8 @@ public class PerfilFragment extends Fragment {
     String urlFoto = "http://192.168.0.15:9898/api/usuarios/foto/" + SharedPreferencesManager.getSomeIntValue((Constantes.PREF_ID));
     String nombres = SharedPreferencesManager.getSomeStringValue(Constantes.PREF_NOMBRES);
     String apellidos = SharedPreferencesManager.getSomeStringValue(Constantes.PREF_APELLIDOS);
+    String telefono = SharedPreferencesManager.getSomeStringValue(Constantes.PREF_TELEFONO);
+    String email = SharedPreferencesManager.getSomeStringValue(Constantes.PREF_EMAIL);
 
     public PerfilFragment() {
         // Required empty public constructor
@@ -41,8 +43,9 @@ public class PerfilFragment extends Fragment {
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View vista = binding.getRoot();
         Glide.with(getContext()).load(urlFoto).apply(RequestOptions.circleCropTransform()).into(binding.ivFotoPerfil);
-        binding.tvNombres.setText("Nombres: "+nombres);
-        binding.tvApellidos.setText("Apellidos: "+apellidos);
+        binding.tvPerfilNombres.setText(" "+nombres+" "+apellidos);
+        binding.tvPerfilApellidos.setText(" "+telefono);
+        binding.tvPerfilEmail.setText(" "+email);
         binding.btnEliminarUsuario.setOnClickListener(v -> {
             mostrarDialogoEliminarCuenta();
         });
