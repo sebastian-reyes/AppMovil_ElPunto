@@ -56,7 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
         parametros.put("apellidos", binding.etApellidos.getText().toString());
         parametros.put("telefono", binding.etTelefono.getText().toString());
         parametros.put("foto", null);
-        JSONObject objRol = new JSONObject(gson.toJson(new Rol(1)));
+        JSONObject objRol = new JSONObject(gson.toJson(new Rol(2)));
         parametros.put("rol", objRol);
         JSONObject jsonObject = new JSONObject(parametros);
 
