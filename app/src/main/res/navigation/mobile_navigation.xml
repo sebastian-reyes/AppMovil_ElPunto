@@ -25,5 +25,10 @@
         android:name="com.elpunto.app.ui.miperfil.PerfilFragment"
         android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/productosFragment"
+        android:name="com.elpunto.app.ui.productos.ProductosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" />
 
 </navigation>

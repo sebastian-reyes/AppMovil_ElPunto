@@ -21,4 +21,12 @@
     <string name="txtBtnEliminarUsuario">Eliminar Usuario</string>
     <string name="next"><![CDATA[>]]></string>
     <string name="txtCat">Categoria</string>
+    <string name="txtTvRegistro">Registro de Cliente</string>
+    <string name="txtHintRegNombre">Nombres:</string>
+    <string name="txtHintRegApellido">Apellidos:</string>
+    <string name="txtHintRegEmail" >Email:</string>
+    <string name="txtHintRegPassword" >Contraseña:</string>
+    <string name="txtHintRegTelefono">Telefono:</string>
+    <string name="txtHintRegDni">DNI:</string>
+    <string name="txtBtnRegistrarse">Registrarme</string>
 </resources>

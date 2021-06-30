@@ -31,6 +31,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.btnRegistro.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
+        });
         binding.btnIngresar.setOnClickListener(v -> {
             if (binding.etEmail.getText().toString().equals("") &&
                     binding.etPassword.getText().toString().equals("")) {
