@@ -17,6 +17,7 @@
         <activity android:name=".RegistroActivity" />
         <activity
             android:name=".LoginActivity"
+            android:noHistory = "true"
             android:theme="@style/Theme.AppMovilElPunto.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

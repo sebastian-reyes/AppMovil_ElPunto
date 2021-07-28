@@ -35,11 +35,12 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
         });
         binding.btnIngresar.setOnClickListener(v -> {
-            if (binding.etEmail.getText().toString().equals("") &&
+            if (binding.etEmail.getText().toString().equals("") ||
                     binding.etPassword.getText().toString().equals("")) {
                 mostrarMensajeError("Los campos correo y contraseña no pueden estar vacíos");
             } else {
                 Login();
+                finish();
             }
         });
         validarDatos();
