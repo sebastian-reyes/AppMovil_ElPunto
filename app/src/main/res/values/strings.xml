@@ -29,4 +29,5 @@
     <string name="txtHintRegTelefono">Telefono:</string>
     <string name="txtHintRegDni">DNI:</string>
     <string name="txtBtnRegistrarse">Registrarme</string>
+    <string name="txtDetallePedidoVentaInfo">Puedes ver el detalle de tu pedido solo tocandolo:</string>
 </resources>

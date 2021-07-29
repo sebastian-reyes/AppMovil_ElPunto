@@ -5,19 +5,21 @@ import java.util.Date;
 public class PedidoVenta {
     private Integer id_pdovta;
     private String tipo_pago;
-    private Date fecha;
+    private String fecha;
     private String estado;
     private Boolean cancelado;
     private String direccion;
+    private Double total;
 
-    public PedidoVenta(Integer id_pdovta, String tipo_pago, Date fecha, String estado,
-                       Boolean cancelado, String direccion) {
+    public PedidoVenta(Integer id_pdovta, String tipo_pago, String fecha, String estado,
+                       Boolean cancelado, String direccion, Double total) {
         this.id_pdovta = id_pdovta;
         this.tipo_pago = tipo_pago;
         this.fecha = fecha;
         this.estado = estado;
         this.cancelado = cancelado;
         this.direccion = direccion;
+        this.total = total;
     }
 
     public PedidoVenta() {
@@ -39,11 +41,11 @@ public class PedidoVenta {
         this.tipo_pago = tipo_pago;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -69,5 +71,13 @@ public class PedidoVenta {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 }
