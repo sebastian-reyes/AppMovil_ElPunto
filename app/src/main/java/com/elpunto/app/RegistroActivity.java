@@ -18,6 +18,7 @@ import com.elpunto.app.databinding.ActivityRegistroBinding;
 import com.elpunto.app.model.Rol;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -67,7 +68,14 @@ public class RegistroActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        startActivity(new Intent(RegistroActivity.this, FotoPerfilActivity.class));
+                        Intent fotoIntent = new Intent(RegistroActivity.this, FotoPerfilActivity.class);
+                        try {
+                            JSONObject objUsuarioNuevo = response.getJSONObject("usuario");
+                            fotoIntent.putExtra("id",objUsuarioNuevo.getInt("id_usuario"));
+                        } catch (JSONException exception) {
+                            exception.printStackTrace();
+                        }
+                        startActivity(fotoIntent);
                     }
                 },
                 new Response.ErrorListener() {

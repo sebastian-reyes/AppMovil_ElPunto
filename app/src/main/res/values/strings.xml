@@ -30,4 +30,7 @@
     <string name="txtHintRegDni">DNI:</string>
     <string name="txtBtnRegistrarse">Registrarme</string>
     <string name="txtDetallePedidoVentaInfo">Puedes ver el detalle de tu pedido solo tocandolo:</string>
+    <string name="txtTituloFotoPerfil">Por último, ingrese una foto de perfil</string>
+    <string name="txtBtnElegirImagen">Elegir foto</string>
+    <string name="txtBtnSubirImagen" >Subir foto</string>
 </resources>

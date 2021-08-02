@@ -11,4 +11,7 @@ public class Constantes {
     public static final String PREF_APELLIDOS = "PREF_APELLIDOS";
     public static final String PREF_EMAIL = "PREF_EMAIL";
     public static final String PREF_TELEFONO = "PREF_TELEFONO";
+
+    //Imagen
+    public static final String CROPPED_IMG_NAME = "ImgCrop";
 }
