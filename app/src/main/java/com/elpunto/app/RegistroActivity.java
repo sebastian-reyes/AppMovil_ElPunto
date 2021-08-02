@@ -75,6 +75,7 @@ public class RegistroActivity extends AppCompatActivity {
                         } catch (JSONException exception) {
                             exception.printStackTrace();
                         }
+                        finish();
                         startActivity(fotoIntent);
                     }
                 },

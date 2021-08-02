@@ -92,13 +92,15 @@ public class FotoPerfilActivity extends AppCompatActivity {
                 new Response.Listener<NetworkResponse>() {
                     @Override
                     public void onResponse(NetworkResponse response) {
-                        Toast.makeText(FotoPerfilActivity.this,"se pudo subir la imagen",Toast.LENGTH_LONG).show();
+                        finish();
+                        startActivity(new Intent(FotoPerfilActivity.this, LoginActivity.class));
+                        Toast.makeText(FotoPerfilActivity.this,"Usuario registrado con éxito",Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(FotoPerfilActivity.this,"no se pudo subir la imagen",Toast.LENGTH_LONG).show();
+                        Toast.makeText(FotoPerfilActivity.this,"No se pudo subir la imagen",Toast.LENGTH_LONG).show();
                     }
                 }
             ){
