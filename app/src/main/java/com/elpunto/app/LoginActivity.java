@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
                 mostrarMensajeError("Los campos correo y contraseña no pueden estar vacíos");
             } else {
                 Login();
-                finish();
             }
         });
         validarDatos();
