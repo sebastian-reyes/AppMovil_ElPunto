@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/not_user" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"

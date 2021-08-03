@@ -41,6 +41,9 @@ public class FotoPerfilActivity extends AppCompatActivity {
         Integer id = getIntent().getExtras().getInt("id");
         binding = ActivityFotoPerfilBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        if(bitmap == null){
+            binding.ivFotoPerfilRegistro.setImageResource(R.drawable.not_user);
+        }
 
         ActivityResultLauncher<Intent> intentLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -71,7 +74,11 @@ public class FotoPerfilActivity extends AppCompatActivity {
         });
 
         binding.btnSubirFoto.setOnClickListener(v -> {
-            subirImagen(id);
+            if (bitmap == null) {
+                Toast.makeText(FotoPerfilActivity.this, "Debe seleccionar una foto", Toast.LENGTH_LONG).show();
+            } else {
+                subirImagen(id);
+            }
         });
 
     }
@@ -94,16 +101,16 @@ public class FotoPerfilActivity extends AppCompatActivity {
                     public void onResponse(NetworkResponse response) {
                         finish();
                         startActivity(new Intent(FotoPerfilActivity.this, LoginActivity.class));
-                        Toast.makeText(FotoPerfilActivity.this,"Usuario registrado con éxito",Toast.LENGTH_LONG).show();
+                        Toast.makeText(FotoPerfilActivity.this, "Usuario registrado con éxito", Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(FotoPerfilActivity.this,"No se pudo subir la imagen",Toast.LENGTH_LONG).show();
+                        Toast.makeText(FotoPerfilActivity.this, "No se pudo subir la imagen", Toast.LENGTH_LONG).show();
                     }
                 }
-            ){
+        ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -114,7 +121,7 @@ public class FotoPerfilActivity extends AppCompatActivity {
             @Override
             protected Map<String, DataPart> getByteData() throws AuthFailureError {
                 Map<String, DataPart> params = new HashMap<>();
-                params.put("foto", new DataPart(id+".jpg", getByteImagen(bitmap)));
+                params.put("foto", new DataPart(id + ".jpg", getByteImagen(bitmap)));
                 return params;
             }
         };
