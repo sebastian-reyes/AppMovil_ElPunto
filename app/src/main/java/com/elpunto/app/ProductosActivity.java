@@ -3,7 +3,9 @@ package com.elpunto.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,6 +34,9 @@ public class ProductosActivity extends AppCompatActivity {
         String nombre_cat = getIntent().getExtras().getString("nombre");
         binding = ActivityProductosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.itemProdVolver.setOnClickListener(v -> {
+            onBackPressed();
+        });
         binding.tvNombreCat.setText(nombre_cat.toString());
         adapter = new ProductoAdapter(this);
         binding.rvProductos.setLayoutManager(

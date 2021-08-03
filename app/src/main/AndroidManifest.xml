@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppMovilElPunto"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProductosActivity"/>
+        <activity android:name=".ProductosActivity"
+            android:theme="@style/Theme.AppMovilElPunto.NoActionBar"/>
         <activity
             android:name=".FotoPerfilActivity"
             android:theme="@style/Theme.AppMovilElPunto.NoActionBar" />
