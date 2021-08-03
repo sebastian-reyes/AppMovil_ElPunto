@@ -16,6 +16,7 @@
             android:id="@+id/tvNombreCategoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:padding="15sp"
             android:text="@string/txtCat"
             android:textAllCaps="false"

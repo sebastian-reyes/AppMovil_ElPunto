@@ -37,6 +37,7 @@
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
                 android:hint="@string/txtHintEmail" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -52,6 +53,7 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
                 android:hint="@string/txtHintPassowrd"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8sp"
+            android:fontFamily="@font/montserrat_regular"
             android:minWidth="55dip"
             android:minHeight="55dip"
             android:text="@string/txtBtnIngresar"
@@ -71,6 +74,7 @@
             android:id="@+id/btnRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:minHeight="55dip"
             android:text="@string/txtBtnRegistro"
             android:textSize="16sp"

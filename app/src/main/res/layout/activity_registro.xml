@@ -43,7 +43,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="2dp"
-                    android:layout_marginRight="2dp" />
+                    android:layout_marginRight="2dp"
+                    android:fontFamily="@font/montserrat_regular" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +60,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etApellidos"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +85,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +102,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPasswordRg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -125,6 +129,7 @@
                     android:id="@+id/etTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
                     android:inputType="phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,6 +150,7 @@
                     android:id="@+id/etDni"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -153,6 +159,7 @@
             android:id="@+id/btnRegistrarse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:text="@string/txtBtnRegistrarse" />
 
     </LinearLayout>
