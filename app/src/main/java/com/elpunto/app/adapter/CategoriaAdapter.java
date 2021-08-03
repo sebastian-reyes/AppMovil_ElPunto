@@ -1,6 +1,7 @@
 package com.elpunto.app.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elpunto.app.MainActivity;
+import com.elpunto.app.ProductosActivity;
 import com.elpunto.app.R;
 import com.elpunto.app.databinding.ItemCategoriaBinding;
 import com.elpunto.app.model.Categoria;
+import com.elpunto.app.ui.categorias.CategoriasFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -46,7 +49,10 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent productoIntent = new Intent(context, ProductosActivity.class);
+                productoIntent.putExtra("id",objCat.getId_cat());
+                productoIntent.putExtra("nombre",objCat.getNombre_cat());
+                v.getContext().startActivity(productoIntent);
             }
         });
     }

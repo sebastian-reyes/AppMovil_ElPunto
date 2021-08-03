@@ -13,13 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppMovilElPunto"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FotoPerfilActivity"
-            android:theme="@style/Theme.AppMovilElPunto.NoActionBar"></activity>
-        <activity android:name=".RegistroActivity"
-            android:theme="@style/Theme.AppMovilElPunto.NoActionBar"/>
+        <activity android:name=".ProductosActivity"/>
+        <activity
+            android:name=".FotoPerfilActivity"
+            android:theme="@style/Theme.AppMovilElPunto.NoActionBar" />
+        <activity
+            android:name=".RegistroActivity"
+            android:theme="@style/Theme.AppMovilElPunto.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:noHistory = "true"
+            android:noHistory="true"
             android:theme="@style/Theme.AppMovilElPunto.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +37,7 @@
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
