@@ -23,7 +23,6 @@ import com.elpunto.app.adapter.CategoriaAdapter;
 import com.elpunto.app.common.Constantes;
 import com.elpunto.app.databinding.FragmentCategoriasBinding;
 import com.elpunto.app.model.Categoria;
-import com.elpunto.app.ui.productos.ProductosFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
