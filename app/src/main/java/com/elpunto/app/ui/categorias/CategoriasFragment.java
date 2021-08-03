@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CategoriasFragment extends Fragment{
+public class    CategoriasFragment extends Fragment{
     private CategoriaAdapter adapter;
     private FragmentCategoriasBinding binding;
 

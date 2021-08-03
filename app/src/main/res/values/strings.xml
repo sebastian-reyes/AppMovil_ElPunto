@@ -33,4 +33,5 @@
     <string name="txtTituloFotoPerfil">Por último, ingrese una foto de perfil</string>
     <string name="txtBtnElegirImagen">Elegir foto</string>
     <string name="txtBtnSubirImagen">Subir foto</string>
+    <string name="txtBtnAgregarCarrito">Agregar</string>
 </resources>
