@@ -1,11 +1,13 @@
 package com.elpunto.app.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,10 +18,13 @@ import com.elpunto.app.model.Producto;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
     private ArrayList<Producto> dataProducto;
     private Context context;
+    private ArrayList<Producto> listaProdOriginal;
 
     public ProductoAdapter(Context context) {
         this.dataProducto = new ArrayList<>();
@@ -50,8 +55,33 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         return dataProducto.size();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void filtroProductos(String cadenaBusqueda) {
+        int longitud = cadenaBusqueda.length();
+        if (longitud == 0) {
+            dataProducto.clear();
+            dataProducto.addAll(listaProdOriginal);
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                List<Producto> coleccion = dataProducto.stream().filter(i -> i.getNombre().toLowerCase()
+                        .contains(cadenaBusqueda.toLowerCase())).collect(Collectors.toList());
+                dataProducto.clear();
+                dataProducto.addAll(coleccion);
+            } else {
+                for (Producto p : listaProdOriginal) {
+                    if (p.getNombre().toLowerCase().contains(cadenaBusqueda.toLowerCase())) {
+                        dataProducto.add(p);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
     public void agregarProductos(ArrayList<Producto> lstproductos) {
         dataProducto.addAll(lstproductos);
+        listaProdOriginal = new ArrayList<>();
+        listaProdOriginal.addAll(dataProducto);
         notifyDataSetChanged();
     }
 

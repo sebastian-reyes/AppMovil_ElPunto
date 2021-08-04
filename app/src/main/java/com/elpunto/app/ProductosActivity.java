@@ -1,10 +1,13 @@
 package com.elpunto.app;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,9 +26,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ProductosActivity extends AppCompatActivity {
+public class ProductosActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ActivityProductosBinding binding;
     private ProductoAdapter adapter;
+    private SearchView svProd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,13 @@ public class ProductosActivity extends AppCompatActivity {
             onBackPressed();
         });
         binding.tvNombreCat.setText(nombre_cat.toString());
-        adapter = new ProductoAdapter(this);
         binding.rvProductos.setLayoutManager(
                 new GridLayoutManager(ProductosActivity.this, 2));
-        binding.rvProductos.setAdapter(adapter);
         obtenerProductos(Constantes.URL_BASE_CATEGORIAS+id_prod);
+        adapter = new ProductoAdapter(ProductosActivity.this);
+        binding.rvProductos.setAdapter(adapter);
+        svProd = findViewById(R.id.svProductos);
+        svProd.setOnQueryTextListener(this);
     }
 
     private void obtenerProductos(String url) {
@@ -84,5 +90,17 @@ public class ProductosActivity extends AppCompatActivity {
                 }
         );
         colaPeticiones.add(jsonObjectRequest);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filtroProductos(newText);
+        return false;
     }
 }
