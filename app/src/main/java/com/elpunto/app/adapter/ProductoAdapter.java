@@ -17,6 +17,7 @@ import com.elpunto.app.model.Producto;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     private ArrayList<Producto> dataProducto;
     private Context context;
     private ArrayList<Producto> listaProdOriginal;
+    DecimalFormat formatDecimal = new DecimalFormat("####.00");
 
     public ProductoAdapter(Context context) {
         this.dataProducto = new ArrayList<>();
@@ -45,7 +47,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         final Producto objProducto = dataProducto.get(position);
         holder.binding.tvNombreProd.setText(objProducto.getNombre());
-        holder.binding.tvPrecioProd.setText("S/." + String.valueOf(objProducto.getPrecio()));
+        holder.binding.tvPrecioProd.setText(String.valueOf("S/." +formatDecimal.format(objProducto.getPrecio())));
         Glide.with(context).load(Constantes.URL_FOTO_PRODUCTO + objProducto.getId_producto().toString())
                 .into(holder.binding.ivProducto);
     }
