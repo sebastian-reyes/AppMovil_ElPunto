@@ -2,6 +2,7 @@ package com.elpunto.app;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -28,6 +29,7 @@ import com.yalantis.ucrop.UCrop;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,23 +43,20 @@ public class FotoPerfilActivity extends AppCompatActivity {
         Integer id = getIntent().getExtras().getInt("id");
         binding = ActivityFotoPerfilBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        if(bitmap == null){
+        if (bitmap == null) {
             binding.ivFotoPerfilRegistro.setImageResource(R.drawable.not_user);
         }
 
         ActivityResultLauncher<Intent> intentLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
+                    Intent data = result.getData();
+                    Uri filePath = data.getData();
                     if (result.getResultCode() == Activity.RESULT_OK) {
-                        Intent data = result.getData();
-                        Uri filePath = data.getData();
                         try {
-                            //recortarImagen(filePath);
-                            //Uri imagenRecortada = UCrop.getOutput(data);
                             bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                             binding.ivFotoPerfilRegistro.setImageBitmap(bitmap);
                             //binding.ivFotoPerfilRegistro.setImageURI(imagenRecortada);
-
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
@@ -81,6 +80,11 @@ public class FotoPerfilActivity extends AppCompatActivity {
             }
         });
 
+        binding.btnOmitirFoto.setOnClickListener(v -> {
+            finish();
+            Toast.makeText(FotoPerfilActivity.this, "Usuario registrado con éxito", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(FotoPerfilActivity.this, LoginActivity.class));
+        });
     }
 
     public byte[] getByteImagen(Bitmap bmp) {

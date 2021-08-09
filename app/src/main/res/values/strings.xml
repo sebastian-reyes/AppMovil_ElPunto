@@ -35,4 +35,5 @@
     <string name="txtBtnSubirImagen">Subir foto</string>
     <string name="txtBtnAgregarCarrito">Agregar</string>
     <string name="HintSvProductos">Busque un producto</string>
+    <string name="txtBtnOmitirPorAhoraFoto">Omitir por ahora</string>
 </resources>

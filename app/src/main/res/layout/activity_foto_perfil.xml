@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/txtTituloFotoPerfil"
         android:textColor="@color/negro"
@@ -56,6 +56,12 @@
             android:fontFamily="@font/montserrat_regular"
             android:minWidth="300dip"
             android:text="@string/txtBtnSubirImagen" />
+
+        <Button
+            android:id="@+id/btnOmitirFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtBtnOmitirPorAhoraFoto" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
