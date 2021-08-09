@@ -36,4 +36,5 @@
     <string name="txtBtnAgregarCarrito">Agregar</string>
     <string name="HintSvProductos">Busque un producto</string>
     <string name="txtBtnOmitirPorAhoraFoto">Omitir por ahora</string>
+    <string name="txtBtnAgregarCarritoDetalle">Agregar al carrito</string>
 </resources>

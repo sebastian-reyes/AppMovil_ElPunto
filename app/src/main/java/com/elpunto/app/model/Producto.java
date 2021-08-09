@@ -3,8 +3,8 @@ package com.elpunto.app.model;
 public class Producto {
     private Integer id_producto;
     private String nombre;
-    private String desc_prod;
     private String fecha_venc;
+    private String desc_prod;
     private Double precio;
     private Integer stock_act;
     private Integer stock_min;

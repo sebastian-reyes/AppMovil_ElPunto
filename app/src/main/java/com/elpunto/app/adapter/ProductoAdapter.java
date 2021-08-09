@@ -1,5 +1,6 @@
 package com.elpunto.app.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -22,10 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> {
+public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHolder> implements View.OnClickListener {
     private ArrayList<Producto> dataProducto;
     private Context context;
     private ArrayList<Producto> listaProdOriginal;
+    View.OnClickListener onClickListener;
     DecimalFormat formatDecimal = new DecimalFormat("####.00");
 
     public ProductoAdapter(Context context) {
@@ -40,14 +42,17 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ItemProductoBinding recyclerBinding = ItemProductoBinding.inflate(layoutInflater, parent,
                 false);
-        return new ViewHolder(recyclerBinding);
+        ViewHolder v = new ViewHolder(recyclerBinding);
+        recyclerBinding.getRoot().setOnClickListener(this);
+        return v;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         final Producto objProducto = dataProducto.get(position);
         holder.binding.tvNombreProd.setText(objProducto.getNombre());
-        holder.binding.tvPrecioProd.setText(String.valueOf("S/." +formatDecimal.format(objProducto.getPrecio())));
+        holder.binding.tvPrecioProd.setText("S/." +formatDecimal.format(objProducto.getPrecio()));
         Glide.with(context).load(Constantes.URL_FOTO_PRODUCTO + objProducto.getId_producto().toString())
                 .into(holder.binding.ivProducto);
     }
@@ -85,6 +90,16 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         listaProdOriginal = new ArrayList<>();
         listaProdOriginal.addAll(dataProducto);
         notifyDataSetChanged();
+    }
+
+    public boolean onClickListener(View.OnClickListener onClickListener){
+        this.onClickListener = onClickListener;
+        return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        onClickListener.onClick(v);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
