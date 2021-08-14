@@ -37,4 +37,5 @@
     <string name="HintSvProductos">Busque un producto</string>
     <string name="txtBtnOmitirPorAhoraFoto">Omitir por ahora</string>
     <string name="txtBtnAgregarCarritoDetalle">Agregar al carrito</string>
+    <string name="txtHomeOfertas">Puedes elegir entre nuestras ofertas:</string>
 </resources>

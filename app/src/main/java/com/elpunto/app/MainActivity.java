@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtBienvenida = findViewById(R.id.tvBienvenida);
         TextView txtEmail = findViewById(R.id.tvEmail);
         txtBienvenida.setText("Bienvenido " +
-                SharedPreferencesManager.getSomeStringValue(Constantes.PREF_NOMBRES) + " "
-                + SharedPreferencesManager.getSomeStringValue(Constantes.PREF_APELLIDOS) + "!");
+                SharedPreferencesManager.getSomeStringValue(Constantes.PREF_NOMBRES));
         txtEmail.setText(SharedPreferencesManager.getSomeStringValue(Constantes.PREF_EMAIL));
         return true;
     }

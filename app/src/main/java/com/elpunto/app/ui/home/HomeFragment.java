@@ -11,30 +11,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.elpunto.app.R;
+import com.elpunto.app.adapter.CategoriaAdapter;
+import com.elpunto.app.common.Constantes;
+import com.elpunto.app.common.SharedPreferencesManager;
+import com.elpunto.app.databinding.FragmentCategoriasBinding;
 import com.elpunto.app.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-
-            }
-        });
-        return root;
+        View vista = binding.getRoot();
+        binding.tvHomeBienvenida.setText("Bienvenido "+ SharedPreferencesManager.getSomeStringValue("PREF_NOMBRES")+ " "+
+                SharedPreferencesManager.getSomeStringValue("PREF_APELLIDOS"));
+        return vista;
     }
 
     @Override
