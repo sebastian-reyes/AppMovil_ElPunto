@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestOptions;
 import com.elpunto.app.MainActivity;
 import com.elpunto.app.R;
@@ -42,10 +43,18 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View vista = binding.getRoot();
-        Glide.with(getContext()).load(urlFoto).apply(RequestOptions.circleCropTransform()).into(binding.ivFotoPerfil);
-        binding.tvPerfilNombres.setText(" "+nombres+" "+apellidos);
-        binding.tvPerfilApellidos.setText(" "+telefono);
-        binding.tvPerfilEmail.setText(" "+email);
+
+        RequestOptions opciones = new RequestOptions()
+                .error(R.drawable.not_user)
+                .circleCrop();
+
+        Glide.with(getContext()).load(urlFoto)
+                .apply(opciones)
+                .into(binding.ivFotoPerfil);
+
+        binding.tvPerfilNombres.setText(" " + nombres + " " + apellidos);
+        binding.tvPerfilApellidos.setText(" " + telefono);
+        binding.tvPerfilEmail.setText(" " + email);
         binding.btnEliminarUsuario.setOnClickListener(v -> {
             mostrarDialogoEliminarCuenta();
         });
