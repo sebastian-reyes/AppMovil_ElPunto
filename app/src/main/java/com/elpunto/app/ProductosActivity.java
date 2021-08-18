@@ -39,7 +39,6 @@ public class ProductosActivity extends AppCompatActivity implements SearchView.O
     DecimalFormat formatDecimal = new DecimalFormat("####.00");
     private ActivityProductosBinding binding;
     private ProductoAdapter adapter;
-    private SearchView svProd;
     private BottomSheetDialog bottomSheetDialog;
     private TextView tvNompreProdDialog, tvDescripcionProdDialog, tvPrecioProdDialog;
     private ImageView ivDetalleProducto;
@@ -60,8 +59,7 @@ public class ProductosActivity extends AppCompatActivity implements SearchView.O
         ArrayList<Producto> lstprod = obtenerProductos(Constantes.URL_BASE_CATEGORIAS + id_prod);
         adapter = new ProductoAdapter(ProductosActivity.this);
         binding.rvProductos.setAdapter(adapter);
-        svProd = findViewById(R.id.svProductos);
-        svProd.setOnQueryTextListener(this);
+        binding.svProductos.setOnQueryTextListener(this);
         adapter.onClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
