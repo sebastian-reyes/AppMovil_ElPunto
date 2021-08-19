@@ -53,7 +53,7 @@ public class ProductosActivity extends AppCompatActivity implements SearchView.O
         binding.itemProdVolver.setOnClickListener(v -> {
             onBackPressed();
         });
-        binding.tvNombreCat.setText(nombre_cat.toString());
+        binding.tvNombreCat.setText(nombre_cat);
         binding.rvProductos.setLayoutManager(
                 new GridLayoutManager(ProductosActivity.this, 2));
         ArrayList<Producto> lstprod = obtenerProductos(Constantes.URL_BASE_CATEGORIAS + id_prod);
@@ -90,10 +90,13 @@ public class ProductosActivity extends AppCompatActivity implements SearchView.O
                                         jsonObject.getString("desc_prod"),
                                         jsonObject.getString("fecha_venc"),
                                         jsonObject.getDouble("precio"),
-                                        jsonObject.getInt("stock_min"),
-                                        jsonObject.getInt("stock_act")
+                                        jsonObject.getInt("stock_act"),
+                                        jsonObject.getInt("stock_min")
                                 );
-                                listaProductos.add(p);
+                                if (p.getStock_act() >= p.getStock_min()) {
+                                    listaProductos.add(p);
+                                }
+
                             }
                             adapter.agregarProductos(listaProductos);
                         } catch (Exception ex) {
