@@ -1,12 +1,14 @@
 package com.elpunto.app.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.elpunto.app.R;
 import com.elpunto.app.databinding.ItemPedidoBinding;
 import com.elpunto.app.model.PedidoVenta;
 
@@ -36,6 +38,14 @@ public class PedidoVentaAdapter extends RecyclerView.Adapter<PedidoVentaAdapter.
     @Override
     public void onBindViewHolder(@NonNull @NotNull PedidoVentaAdapter.ViewHolder holder, int position) {
         final PedidoVenta objPedido = dataPedidoVenta.get(position);
+
+        if (objPedido.getEstado().toLowerCase().equals("en entrega")) {
+            holder.binding.tvEstado.setTextColor(Color.parseColor("#ECE01F"));
+        } else if (objPedido.getEstado().toLowerCase().equals("entregado")) {
+            holder.binding.tvEstado.setTextColor(Color.parseColor("#4A8512"));
+        } else{
+            holder.binding.tvEstado.setTextColor(Color.parseColor("#CD1616"));
+        }
         holder.binding.tvID.setText("N° de Pedido: " + objPedido.getId_pdovta());
         holder.binding.tvEstado.setText(objPedido.getEstado());
         holder.binding.tvFecha.setText("Fecha: " + objPedido.getFecha());
