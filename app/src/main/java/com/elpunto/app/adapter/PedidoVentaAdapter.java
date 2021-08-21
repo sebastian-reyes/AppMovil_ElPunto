@@ -1,5 +1,6 @@
 package com.elpunto.app.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -14,12 +15,15 @@ import com.elpunto.app.model.PedidoVenta;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PedidoVentaAdapter extends RecyclerView.Adapter<PedidoVentaAdapter.ViewHolder> {
 
+
     private ArrayList<PedidoVenta> dataPedidoVenta;
     private Context context;
+    DecimalFormat formatDecimal = new DecimalFormat("####.00");
 
     public PedidoVentaAdapter(Context context) {
         dataPedidoVenta = new ArrayList<>();
@@ -35,6 +39,7 @@ public class PedidoVentaAdapter extends RecyclerView.Adapter<PedidoVentaAdapter.
         return new ViewHolder(recyclerBinding);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull @NotNull PedidoVentaAdapter.ViewHolder holder, int position) {
         final PedidoVenta objPedido = dataPedidoVenta.get(position);
@@ -45,11 +50,12 @@ public class PedidoVentaAdapter extends RecyclerView.Adapter<PedidoVentaAdapter.
             holder.binding.tvEstado.setTextColor(Color.parseColor("#4A8512"));
         } else{
             holder.binding.tvEstado.setTextColor(Color.parseColor("#CD1616"));
+            holder.binding.tvTotal.setTextColor(Color.parseColor("#959B8F"));
         }
         holder.binding.tvID.setText("N° de Pedido: " + objPedido.getId_pdovta());
         holder.binding.tvEstado.setText(objPedido.getEstado());
         holder.binding.tvFecha.setText("Fecha: " + objPedido.getFecha());
-        holder.binding.tvTotal.setText("S/. " + objPedido.getTotal().toString());
+        holder.binding.tvTotal.setText("S/. " +formatDecimal.format(objPedido.getTotal()));
     }
 
     @Override
